@@ -1,1 +1,78 @@
 @import "tailwindcss";
+
+/*
+  Design tokens — "reading room" palette.
+  Named tokens generate matching Tailwind utilities automatically in v4,
+  e.g. --color-spine -> bg-spine / text-spine / border-spine.
+*/
+@theme {
+  --font-display: "Lora", "Georgia", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
+
+  --color-paper: #f7f4ec;
+  --color-paper-dim: #ece7d8;
+  --color-ink: #24211b;
+  --color-ink-soft: #5b564b;
+
+  --color-spine: #33415c;
+  --color-spine-dark: #232e42;
+
+  --color-brass: #a9832b;
+  --color-brass-light: #c9a94f;
+
+  --color-sage: #2f6b4a;
+  --color-sage-bg: #e4efe6;
+
+  --color-amber: #a8641c;
+  --color-amber-bg: #f6e8d5;
+
+  --color-rust: #a03a2b;
+  --color-rust-bg: #f4dfda;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/* Consistent, visible keyboard focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background-color: var(--color-brass-light);
+  color: var(--color-spine-dark);
+}
+
+/* Slim, warm-toned scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper-dim);
+}
+::-webkit-scrollbar-thumb {
+  background: #c9c2ac;
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
