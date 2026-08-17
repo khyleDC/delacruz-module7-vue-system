@@ -1,48 +1,53 @@
 <script setup>
-// Decorative "spines on a shelf" strip — the page's one signature flourish.
-// Purely visual, so it's hidden from assistive tech.
-const spineColors = ['#a9832b', '#33415c', '#2f6b4a', '#a03a2b', '#c9a94f', '#33415c', '#a9832b', '#2f6b4a']
-const spines = Array.from({ length: 48 }, (_, i) => ({
-  color: spineColors[i % spineColors.length],
-  height: 10 + ((i * 37) % 14), // deterministic pseudo-random heights, no layout shift
-}))
+defineProps({
+  total: { type: Number, required: true },
+  available: { type: Number, required: true },
+  borrowed: { type: Number, required: true },
+  maintenance: { type: Number, required: true },
+})
 </script>
 
 <template>
-  <header class="sticky top-0 z-30 bg-spine text-white shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-4 flex items-center gap-4">
-      <div class="shrink-0 w-11 h-11 rounded-lg bg-spine-dark flex items-center justify-center ring-1 ring-white/10">
-        <svg viewBox="0 0 24 24" class="w-6 h-6 text-brass-light" fill="none" aria-hidden="true">
-          <path
-            d="M4 5.5C4 4.67 4.67 4 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M20 5.5c0-.83-.67-1.5-1.5-1.5H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5v-13Z"
-            stroke="currentColor"
-            stroke-width="1.6"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
-      <div class="min-w-0">
-        <h1 class="font-display font-semibold text-xl sm:text-2xl leading-tight tracking-tight truncate">
-          Library Management System
-        </h1>
-        <p class="text-white/60 text-xs sm:text-sm">Catalog, search, and circulation — all in this browser</p>
-      </div>
-    </div>
+  <header class="bg-ink-900 text-paper">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-xl">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-gold-500">
+            <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Catalog System
+          </div>
+          <h1 class="font-display mt-4 text-3xl sm:text-4xl font-semibold leading-tight">
+            Library Management System
+          </h1>
+          <p class="mt-3 text-sm sm:text-base text-ink-100/90 leading-relaxed">
+            Add new titles to the catalog, track who has what on loan, and keep
+            maintenance status current — every change is saved to this browser
+            automatically.
+          </p>
+        </div>
 
-    <!-- Bookshelf strip -->
-    <div class="flex items-end gap-[3px] h-3.5 px-4 sm:px-6 lg:px-8 overflow-hidden" aria-hidden="true">
-      <span
-        v-for="(spine, i) in spines"
-        :key="i"
-        class="flex-1 rounded-t-sm"
-        :style="{ backgroundColor: spine.color, height: spine.height + 'px' }"
-      />
+        <dl class="grid grid-cols-4 gap-2 sm:gap-3 shrink-0">
+          <div class="rounded-xl bg-white/10 px-3 py-2.5 text-center min-w-[4.5rem]">
+            <dt class="text-[0.65rem] uppercase tracking-wide text-ink-100/70">Total</dt>
+            <dd class="font-display text-xl sm:text-2xl font-semibold mt-0.5">{{ total }}</dd>
+          </div>
+          <div class="rounded-xl bg-white/10 px-3 py-2.5 text-center min-w-[4.5rem]">
+            <dt class="text-[0.65rem] uppercase tracking-wide text-ink-100/70">Available</dt>
+            <dd class="font-display text-xl sm:text-2xl font-semibold mt-0.5 text-emerald-300">{{ available }}</dd>
+          </div>
+          <div class="rounded-xl bg-white/10 px-3 py-2.5 text-center min-w-[4.5rem]">
+            <dt class="text-[0.65rem] uppercase tracking-wide text-ink-100/70">Borrowed</dt>
+            <dd class="font-display text-xl sm:text-2xl font-semibold mt-0.5 text-amber-300">{{ borrowed }}</dd>
+          </div>
+          <div class="rounded-xl bg-white/10 px-3 py-2.5 text-center min-w-[4.5rem]">
+            <dt class="text-[0.65rem] uppercase tracking-wide text-ink-100/70">Maintenance</dt>
+            <dd class="font-display text-xl sm:text-2xl font-semibold mt-0.5 text-rose-300">{{ maintenance }}</dd>
+          </div>
+        </dl>
+      </div>
     </div>
   </header>
 </template>
