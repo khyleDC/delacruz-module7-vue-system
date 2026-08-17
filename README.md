@@ -152,6 +152,36 @@ The following screenshots demonstrate the main features and responsive behavior 
 
 ### 7. Responsive / Mobile View
 
+![Responsive View](./screenshots/responsive.png)## Application Screenshots
+
+The following screenshots demonstrate the main features and responsive behavior of the Library Management System — Book Records Module.
+
+### 1. Home Page
+
+![Home Page](./screenshots/home.png)
+
+### 2. Add Book Form
+
+![Add Book Form](./screenshots/add-form.png)
+
+### 3. Book Records List
+
+![Book Records List](./screenshots/book-list.png)
+
+### 4. Search Function
+
+![Search Function](./screenshots/search.png)
+
+### 5. Edit Book Form
+
+![Edit Book Form](./screenshots/edit-form.png)
+
+### 6. Delete Confirmation
+
+![Delete Confirmation](./screenshots/delete-confirm.png)
+
+### 7. Responsive / Mobile View
+
 ![Responsive View](./screenshots/responsive.png)
 
 ---
